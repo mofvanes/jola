@@ -34,7 +34,7 @@ data_collator = make_data_collator(tokenizer=jola_tokenizer)
 
 # dataset setting
 jola_dataset = JoLADataset(data_path=jola_config["data_config"]["data_path"])
-jola_data = jola_dataset.data_from_file()
+jola_data = jola_dataset.data_from_json()
 
 # early stop according to the performance from validation set
 early_stopping_callback = EarlyStoppingCallback(
