@@ -51,6 +51,8 @@ class JoLADataset:
             raw_data = []
             with open(data_dir, 'r') as f:
                 raw_data = json.load(f)
+            for row in raw_data:
+                row["text"] = self.generate_prompt(row["instruction"], row["input"], row["answer"])
             ### Only sample part of the training data if train_size !=0
             if self.train_size!=0 and split=='train':
                 if len(raw_data) >= self.train_size:
@@ -65,7 +67,13 @@ class JoLADataset:
             self.jola_datasets[split] = formatted_data
         return self.jola_datasets
 
-    def generate_prompt(self, instruction, input=None):
+    def generate_prompt(self, instruction, input=None, answer=None):
+        if answer:
+            return f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+                    ### Instruction: {instruction}
+                    ### Input: {input}
+                    ### Response: {answer}
+                    """  # noqa: E501
         if input:
             return f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
                     ### Instruction: {instruction}
