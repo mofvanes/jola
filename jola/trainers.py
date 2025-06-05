@@ -64,9 +64,9 @@ class JoLATrainer(SFTTrainer):
                 model=model,
                 train_dataset=train_dataset,
                 eval_dataset=eval_dataset,
-                dataset_text_field=dataset_text_field,
+                #dataset_text_field=dataset_text_field,
                 tokenizer=tokenizer,
-                max_seq_length=max_seq_length,
+                #max_seq_length=max_seq_length,
                 data_collator=data_collator,
                 args=args,
                 peft_config=peft_config,
@@ -77,9 +77,9 @@ class JoLATrainer(SFTTrainer):
                 model=model,
                 train_dataset=train_dataset,
                 eval_dataset=eval_dataset,
-                dataset_text_field=dataset_text_field,
+                #dataset_text_field=dataset_text_field,
                 tokenizer=tokenizer,
-                max_seq_length=max_seq_length,
+                #max_seq_length=max_seq_length,
                 data_collator=data_collator,
                 args=args,
                 peft_config=peft_config,
@@ -129,7 +129,7 @@ class JoLATrainer(SFTTrainer):
         concrete_list = clipped_concrete.squeeze().tolist()
         return concrete_list
 
-    def compute_loss(self, model, inputs,return_outputs=False):
+    def compute_loss(self, model, inputs,return_outputs=False,**kwargs):
         labels = inputs['labels']
 
         outputs = model(**inputs)
