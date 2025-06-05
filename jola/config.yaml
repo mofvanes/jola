@@ -1,9 +1,9 @@
 model_config:
-  pretrained_model_name_or_path: "meta-llama/Llama-3.1-8B-Instruct"
+  pretrained_model_name_or_path: "meta-llama/Llama-3.2-1B-Instruct"
   device: "cuda"
-  cache_dir: "/dss/dssmcmlfs01/pn39je/pn39je-dss-0001/go52tox/.cache"
+  cache_dir: "./tmp/"
   applied_module: 'attention'
-  base_model_name: 'llama3.1_8B_chat'
+  base_model_name: 'llama3.2_1B_chat'
 
 training_config:
   learning_rate: 0.005
@@ -16,7 +16,6 @@ training_config:
   save_strategy: 'epoch'
   load_best_model_at_end: True
   save_total_limit: 1
-  report_to: "wandb"
   logging_strategy: "epoch"
   seed: 42
   do_train: True

@@ -10,7 +10,7 @@ from jola import JoLAConfig, JoLAModel, JoLATrainer, JoLADataset, make_data_coll
 # set the jola config through a yamal file, please use your own yamal by setting 'default=False' and specify a 'yaml' file
 jola_config = JoLAConfig.get_jola_config(default=True)
 
-jola_tokenizer = AutoTokenizer.from_pretrained(**jola_config["model_config"])
+jola_tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-1B-Instruct")
 
 # Use right padding for training
 jola_tokenizer.padding_side = 'right'
